@@ -1,0 +1,42 @@
+#:include igormapview.kv
+#:include togglebuttons.kv
+#:include igormapview.py
+
+
+
+MDBoxLayout:
+    orientation: 'vertical'
+    buttons: b1
+
+    MDToolbar:
+        title: 'Навигация'
+        right_action_items: [['magnify', lambda x: app.search_menu.open()]]
+        left_action_items: [['menu', lambda x: app.search_menu.open()]]
+        md_bg_color: app.theme_cls.primary_color
+
+    MDGridLayout:
+        cols: 4
+        size_hint:(1,0.20)
+
+        TogglesButton:
+            id: b1
+            text:'Магазины'
+            group:'path'
+
+        TogglesButton:
+            id: b2
+            text:'Кафе'
+            group:'path'
+
+        TogglesButton:
+            id: b3
+            text:'Развлечения'
+            group:'path'
+
+        TogglesButton:
+            id: b4
+            text:'Другое'
+            group:'path'
+
+    IgorMapView:
+        id: mapview

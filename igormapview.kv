@@ -1,0 +1,18 @@
+#:import MapView kivy_garden.mapview.MapView
+#:import GpsBlinker gpsblinker.GpsBlinker
+#:include gpsblinker.kv
+
+<IgorMapView>:
+    lat: 61.691852
+    lon: 50.808889
+    zoom:16
+    on_zoom:
+        self.zoom = 10 if self.zoom < 10 else self.zoom
+    on_lat:
+        self.start_getting_markets_in_iov()
+    on_lon:
+        self.start_getting_markets_in_iov()
+    GpsBlinker:
+        id: blinker
+        lat: root.lat
+        lon: root.lon
